@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/topzerzar/nodejs_tcp/issues"
   },
-  "homepage": "https://github.com/topzerzar/nodejs_tcp#readme"
+  "homepage": "https://github.com/topzerzar/nodejs_tcp#readme",
+  "dependencies": {
+    "net": "^1.0.2"
+  }
 }
