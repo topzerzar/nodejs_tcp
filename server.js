@@ -1,16 +1,17 @@
+require('dotenv').config();
 const net = require('net');
 
-const HOST = '127.0.0.1';
-const PORT = 10000;
+const host = process.env.HOST;
+const port = process.env.PORT;
+
+console.log(host, port);
 
 // Create a server instance, and chain the listen function to it
 // The function passed to net.createServer() becomes the event handler for the 'connection' event
 // The sock object the callback function receives UNIQUE for each connection
 net.createServer(function(sock) {
-    sock.write('Echo Server\n');
-    sock.pipe(sock);
     // We have a connection - a socket object is assigned to the connection automatically
-    console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remotePort);
+    console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remoteport);
     
     // Add a 'data' event handler to this instance of socket
     sock.on('data', function(data) {
@@ -23,9 +24,9 @@ net.createServer(function(sock) {
     
     // Add a 'close' event handler to this instance of socket
     sock.on('close', function(data) {
-        console.log('CLOSED: ' + sock.remoteAddress +' '+ sock.remotePort);
+        console.log('CLOSED: ' + sock.remoteAddress +' '+ sock.remoteport);
     });
     
-}).listen(PORT, HOST);
+}).listen(port, host);
 
-console.log('Server listening on ' + HOST +':'+ PORT);
+console.log('Server listening on ' + host +':'+ port);

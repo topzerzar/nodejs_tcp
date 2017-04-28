@@ -1,12 +1,13 @@
+require('dotenv').config();
 const net = require('net');
 
-const HOST = '127.0.0.1';
-const PORT = 10000;
+const host = process.env.HOST;
+const port = process.env.PORT;
 
 const client = new net.Socket();
-client.connect(PORT, HOST, function() {
+client.connect(port, host, function() {
 
-    console.log('CONNECTED TO: ' + HOST + ':' + PORT);
+    console.log('CONNECTED TO: ' + host + ':' + port);
     // Write a message to the socket as soon as the client is connected, the server will receive it as message from the client 
     client.write('I am Chuck Norris!');
 
